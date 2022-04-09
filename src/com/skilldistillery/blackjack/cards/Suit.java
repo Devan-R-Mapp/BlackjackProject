@@ -11,6 +11,11 @@ public enum Suit {
     this.symbol = symbol;
   }
 
+  public String symbol_toString() {
+	  return symbol;
+  }
+  
+  
   @Override
   public String toString() {
     return name;

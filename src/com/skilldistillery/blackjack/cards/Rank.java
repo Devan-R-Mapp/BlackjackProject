@@ -6,13 +6,14 @@ public enum Rank {
     SEVEN(7), EIGHT(8), NINE(9), TEN(10), 
     JACK(10), QUEEN(10), KING(10), ACE(11);
     
-    private int value;
+    private int blackJackvalue;
 
     private Rank(int value) {
-      this.value = value;
+      this.blackJackvalue = value;
     }
+    
 
-    public int getValue() {
-      return value;
+    public int getBlackJackValue() {
+      return blackJackvalue;
     }
 }

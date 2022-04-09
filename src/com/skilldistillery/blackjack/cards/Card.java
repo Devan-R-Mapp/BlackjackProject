@@ -9,8 +9,8 @@ public class Card {
     this.suit = suit;
   }
   
-  public int getValue() {
-    return rank.getValue();
+  public int getBlackJackValue() {
+    return rank.getBlackJackValue();
   }
 
   @Override
@@ -38,6 +38,8 @@ public class Card {
     return true;
   }
 
+
+  
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();
