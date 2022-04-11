@@ -27,11 +27,11 @@ public class Dealer extends Player{
 
 	public void addCardObtusicated(Card dealtcard) {
 		this.hand.add(0, dealtcard);
-		if (printouts) {
+		
 			System.out.println("-------------------------------------");
 			System.out.println(Name + " was dealt a face down card" );
 			System.out.println("-------------------------------------");
-		}
+		
 
 	}
 	

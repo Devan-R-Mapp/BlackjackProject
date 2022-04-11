@@ -31,30 +31,30 @@ public class BlackjackApplication {
 		Scanner sc = new Scanner(System.in);
 
 		while (gameIsRunning) {
-			openingDeal(runnerDeck, DL, PL1);
-			if(debug) {
-			System.out.println(runnerDeck.checkDeckSize());
-			}
-			player1turn(runnerDeck, PL1, sc);
+			if (runnerDeck.checkDeckSize() > 6) {
+				openingDeal(runnerDeck, DL, PL1);
+				if (debug) {
+					System.out.println(runnerDeck.checkDeckSize());
+				}
+				player1turn(runnerDeck, PL1, sc);
+				if (PL1.getHandValue() > 21) {
+					System.out.println("The game is over. " + PL1.getName() + " lost, with a score over 21.");
+					gameIsRunning = userchoiceforcontinue(BJtable, gameIsRunning, sc);
+					continue;
 
-			if (PL1.getHandValue() > 21) {
-				System.out.println("The game is over. " + PL1.getName() + " lost, with a score over 21.");
-				gameIsRunning = userchoiceforcontinue(BJtable, gameIsRunning, sc);
-				continue;
-
-			} else {
-				while (DL.getHandValue() < 17) {
-					printPlayerHand(DL);
-					if (DL.getHandValue() < 17) {
-						DL.addCard(runnerDeck.dealCard());
+				} else {
+					while (DL.getHandValue() < 17) {
+						printPlayerHand(DL);
+						if (DL.getHandValue() < 17) {
+							DL.addCard(runnerDeck.dealCard());
+						}
 					}
 				}
+				gameIsRunning = winChecker(BJtable, gameIsRunning, DL, PL1, sc);
+			} else {
+				System.out.println("Please restart the game to play more");
+				gameIsRunning = false;
 			}
-
-			/**
-			 * Decide to put this into a method for readability
-			 */
-			gameIsRunning = winChecker(BJtable, gameIsRunning, DL, PL1, sc);
 
 		} // while(gameIsRunning)
 		if (debug) {
@@ -178,7 +178,8 @@ public class BlackjackApplication {
 			Player.setHandValue(Player.getHandValue() + card.getBlackJackValue());
 		}
 		System.out.println();
-		System.out.println(Player.getName() + " score = " + Player.getHandValue() + " |" + value.toString());
+		System.out.println("** " + Player.getName() + " score = " + Player.getHandValue() + " |" + value.toString() + " **");
+		System.out.println();
 
 	}
 

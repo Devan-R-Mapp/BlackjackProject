@@ -8,6 +8,7 @@ public class Player {
 	public List<Card> hand;
 	public String Name;
 	public int handValue;
+	
 	//public StringBuffer myHand = new StringBuffer();
 
 //	public StringBuffer xGetMyBJHand() {
